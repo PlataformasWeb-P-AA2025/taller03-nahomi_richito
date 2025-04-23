@@ -1,0 +1,19 @@
+.uno{
+	background-color: skyblue;
+	border: solid blue;
+}
+
+.mensaje {
+	background-color: lightyellow;
+	border: solid yellow;
+	padding: 10px;
+	margin: 20px;
+}
+
+.dos {
+	background-color: orange;
+}
+
+.comentario {
+	border-bottom: solid green;
+}
