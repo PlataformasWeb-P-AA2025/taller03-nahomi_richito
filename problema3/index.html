@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Demo Jquery</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  </head>
+
+  <body>
+      <h1>Ejemplo de Uso de Jquery</h1>
+
+      <div id="mensajeFinal">
+      </div>
+      
+      <button type="submit" id="obtenerInformacion">Obtener información</button>
+      <button type="submit" id="limpiarInformacion">Limpiar información</button>
+  </body>
+
+  <script>
+    $(document).ready(function() {
+      var url = "https://pkgstore.datahub.io/core/country-codes/country-codes_json/data/616b1fb83cbfd4eb6d9e7d52924bb00a/country-codes_json.json";
+      $( "#obtenerInformacion" ).click(function() {
+            $.ajax({
+              dataType: 'json',
+              url: url 
+            }).then(function(data) {
+
+              // Cambiar el nombre de la key 
+              // lo saque de https://www-geeksforgeeks-org.translate.goog/rename-object-key-in-javascript/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc 
+              nuevaData = data.map(function (obj) {
+
+                  // Assign new key
+                  obj['CLDR'] = obj['CLDR display name']; 
+                  obj['Geoname_ID'] = obj['Geoname ID']; 
+
+                  // Delete old key
+                  delete obj['CLDR display name']; 
+                  delete obj['Geoname ID']; 
+
+                  return obj;
+              });
+
+              for(var i=0; i<data.length; i++){
+                console.log(nuevaData[i]);
+                console.log(nuevaData[i].CLDR);
+                console.log(nuevaData[i].Capital);
+                console.log(nuevaData[i].FIPS);
+                console.log(nuevaData[i].FIFA);
+                console.log(nuevaData[i].Continent);
+                console.log(nuevaData[i].Languages);
+                console.log(nuevaData[i].Geoname_ID);
+                console.log(nuevaData[i].DS);
+
+                $('#mensajeFinal').append("<p> <b>Nombre Institucion:</b> "+ nuevaData[i].CLDR + " <b>Provincia:</b> " + nuevaData[i].Capital + " <b>Provincia:</b> " + nuevaData[i].FIPS + " <b>Num Estudiantes:</b> " + nuevaData[i].Continent + " <b>Num Estudiantes:</b> " + nuevaData[i].Languages + " <b>Num Estudiantes:</b> " + nuevaData[i].Geoname_ID + " <b>Num Estudiantes:</b> " + nuevaData[i].DS + "</p>");
+              }
+            });      
+      });
+      
+      $( "#limpiarInformacion" ).click(function() {
+          $('#mensajeFinal').empty();
+      });
+    });
+  </script>
+</html>
+
