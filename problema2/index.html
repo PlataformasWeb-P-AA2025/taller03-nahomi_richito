@@ -4,30 +4,42 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-   <link rel="stylesheet" href="/resources/demos/style.css">
-    <title>Demo Jquery</title>
-  <script src="js/jquery-3.6.0.min.js"></script>
+    <!--<link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <title>Ejercicio 2</title>
+    <!--<script src="js/jquery-3.6.0.min.js"></script>-->
+    <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+  </script>
   </head>
   <body>
-      <h1>Ejercicio 2</h1> <br>
-      <h3>Nombre:</h3><br>
-      <input type="text">
-      <h3>Apellido:</h3><br>
-      <input type="text">
+      <h1>Ejercicio 2</h1>
+      <h3>Nombre:</h3>
+      <input type="text" id = "Nombre">
+      <h3>Apellido:</h3>
+      <input type="text" id = "Apellido">
       <h3>Fecha de Nacimiento</h3>
-      <input type=""> <br>
-      <button type="submit">Generar Mensaje</button>
+      <p>Fecha: <input type="text" id="datepicker"></p> 
+      <button type="submit">Generar Mensaje</button> <br>
 
   </body>
+
   <script>
     $(document).ready(function() {
       $("#accordion").accordion();
       $( "button" ).click(function() {
-        var texto1 = $('#nombreCarrera').text();
-        var texto2 = $('#nombreUniversidad').text();
-        $('#mensajeFinal').text("Su carrera es: "+ texto1 + ". Su universidad es: "
-          + texto2);
+        var texto1 = $('#Nombre').val();
+        var texto2 = $('#Apellido').val();
+        var texto3 = $('#datepicker').val();
+       // $('#mensajeFinal').text("Su carrera es: "+ texto1 + ". Su universidad es: "
+         // + texto2);
+        //console.log(texto1);
         console.log(texto1);
+        console.log(texto2);
+        console.log(texto3);
       });
     });
   </script>
