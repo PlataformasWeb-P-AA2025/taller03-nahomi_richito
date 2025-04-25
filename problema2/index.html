@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./estilos/style.css">
     <!--<link rel="stylesheet" href="/resources/demos/style.css"> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
@@ -16,30 +17,42 @@
   </script>
   </head>
   <body>
-      <h1>Ejercicio 2</h1>
-      <h3>Nombre:</h3>
-      <input type="text" id = "Nombre">
-      <h3>Apellido:</h3>
-      <input type="text" id = "Apellido">
-      <h3>Fecha de Nacimiento</h3>
-      <p>Fecha: <input type="text" id="datepicker"></p> 
-      <button type="submit">Generar Mensaje</button> <br>
-
+    <div class = "general">
+      <div class = "container">
+        <h1>Ejercicio 2</h1>
+        <h3>Nombre:</h3>
+        <input type="text" id = "nombre">
+        <h3>Apellido:</h3>
+        <input type="text" id = "apellido">
+        <h3>Fecha de Nacimiento</h3>
+        <p>Fecha: <input type="text" id="datepicker"></p> 
+        <button type="submit">Generar Mensaje</button> <br>
+      </div> 
+      <div class="container">
+        <div class="resultadosIngresados" id="resultadosIngresados" style="display: none;">
+          <h2>Datos ingresados</h2>
+          <div id="resultados"></div>
+        </div>
+      </div>
+    </div>
+      
   </body>
 
   <script>
     $(document).ready(function() {
-      $("#accordion").accordion();
       $( "button" ).click(function() {
-        var texto1 = $('#Nombre').val();
-        var texto2 = $('#Apellido').val();
+        var texto1 = $('#nombre').val();
+        var texto2 = $('#apellido').val();
         var texto3 = $('#datepicker').val();
        // $('#mensajeFinal').text("Su carrera es: "+ texto1 + ". Su universidad es: "
          // + texto2);
-        //console.log(texto1);
-        console.log(texto1);
-        console.log(texto2);
-        console.log(texto3);
+        console.log(`${texto1}\n${texto2}\n${texto3}`);
+      $('#resultados').html(`
+        <p>${texto1}</p>
+        <p>${texto2}</p>
+        <p>${texto3}</p>
+      `);
+      $('#resultadosIngresados').show();
       });
     });
   </script>
